@@ -31,3 +31,23 @@ class Customer(User):
 
     def greeting(self):
         return f'My name is {self.name} and I am {self.age} and my balance is {self.balance}'
+    
+# init user object
+brad = User('Brad Traversy', 'brad@email.com', 25)
+
+# init customer object
+sem = Customer('Adam', 'adam@email.com', 27)
+
+# edit property
+brad.age = 37
+
+# call method
+print(brad.greeting())
+
+# call method
+print(sem.greeting())
+
+# call method
+sem.set_balance(500)
+print(sem.greeting())
+
