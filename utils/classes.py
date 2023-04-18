@@ -1,53 +1,61 @@
-# this file refers to topics related to classes in python
+# how to use setter and getter methods of a class
 
-# class is a blueprint for creating objects
-# an object has properties and methods(functions) associated with it
-
-# create a class
-class User:
-    # constructor
-    def __init__(self, name, email, age):
+class Person:
+    def __init__(self, name, age):
         self.name = name
-        self.email = email
         self.age = age
 
-    def greeting(self):
-        return f'My name is {self.name} and I am {self.age}'
+    def get_name(self):
+        return self.name
 
-    def has_birthday(self):
-        self.age += 1
+    def get_age(self):
+        return self.age
 
-# extend class
-class Customer(User):
-    # constructor
-    def __init__(self, name, email, age):
+    def set_name(self, name):
         self.name = name
-        self.email = email
+
+    def set_age(self, age):
         self.age = age
-        self.balance = 0
 
-    def set_balance(self, balance):
-        self.balance = balance
-
-    def greeting(self):
-        return f'My name is {self.name} and I am {self.age} and my balance is {self.balance}'
+    def __str__(self):
+        return f"Name: {self.name}, Age: {self.age}"
     
-# init user object
-brad = User('Brad Traversy', 'brad@email.com', 25)
+    def __repr__(self):
+        return f"Name: {self.name}, Age: {self.age}"
+    
+    def __eq__(self, other):
+        return self.name == other.name and self.age == other.age
+    
+    def __ne__(self, other):
+        return self.name != other.name or self.age != other.age
+    
+    def __lt__(self, other):
+        return self.age < other.age
+    
+    def __le__(self, other):
+        return self.age <= other.age
+    
+    def __gt__(self, other):
+        return self.age > other.age
+    
 
-# init customer object
-sem = Customer('Adam', 'adam@email.com', 27)
 
-# edit property
-brad.age = 37
+if __name__ == "__main__":
+    p1 = Person("John", 20)
+    print(p1)
+    print(p1.get_name())
+    print(p1.get_age())
+    p1.set_name("Jane")
+    p1.set_age(30)
+    print(p1)
+    print(p1.get_name())
+    print(p1.get_age())
 
-# call method
-print(brad.greeting())
-
-# call method
-print(sem.greeting())
-
-# call method
-sem.set_balance(500)
-print(sem.greeting())
-
+    p2 = Person("John", 20)
+    print(p1 == p2)
+    print(p1 != p2)
+    print(p1 < p2)
+    print(p1 <= p2)
+    print(p1 > p2)
+    print(p1 >= p2)
+    
